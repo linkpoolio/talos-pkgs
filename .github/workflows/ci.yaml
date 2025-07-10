@@ -65,15 +65,18 @@ jobs:
       - name: Unshallow
         run: |
           git fetch --prune --unshallow
-      - name: Set up Docker Buildx
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v1
         id: setup-buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          append: |
-            - endpoint: tcp://buildkit-arm64.ci.svc.cluster.local:1234
-              platforms: linux/arm64
-          driver: remote
-          endpoint: tcp://buildkit-amd64.ci.svc.cluster.local:1234
+      #- name: Set up Docker Buildx
+      #  id: setup-buildx
+      #  uses: docker/setup-buildx-action@v3
+      #  with:
+      #    append: |
+      #      - endpoint: tcp://buildkit-arm64.ci.svc.cluster.local:1234
+      #        platforms: linux/arm64
+      #    driver: remote
+      #    endpoint: tcp://buildkit-amd64.ci.svc.cluster.local:1234
       - name: Build
         if: github.event_name == 'pull_request'
         run: |
