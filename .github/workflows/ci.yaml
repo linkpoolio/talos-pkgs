@@ -26,8 +26,9 @@ jobs:
       packages: write
       pull-requests: read
     runs-on:
-      - self-hosted
-      - pkgs
+      - ubuntu-latest
+    #  - self-hosted
+    #  - pkgs
     if: (!startsWith(github.head_ref, 'renovate/') && !startsWith(github.head_ref, 'dependabot/'))
     outputs:
       labels: ${{ steps.retrieve-pr-labels.outputs.result }}
@@ -121,8 +122,9 @@ jobs:
           draft: "true"
   reproducibility:
     runs-on:
-      - self-hosted
-      - pkgs
+      - ubuntu-latest
+    #  - self-hosted
+    #  - pkgs
     if: contains(fromJSON(needs.default.outputs.labels), 'integration/reproducibility')
     needs:
       - default
