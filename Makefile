@@ -45,6 +45,7 @@ COMMON_ARGS += --build-arg=SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH)
 # targets defines all the available targets
 
 TARGETS = apparmor
+TARGETS += bnxt_re
 TARGETS += ca-certificates
 TARGETS += cni
 TARGETS += containerd
