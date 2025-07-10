@@ -27,6 +27,8 @@ jobs:
       pull-requests: read
     runs-on:
       - ubuntu-latest
+    strategy:
+      fail-fast: false
     #  - self-hosted
     #  - pkgs
     if: (!startsWith(github.head_ref, 'renovate/') && !startsWith(github.head_ref, 'dependabot/'))
